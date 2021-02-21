@@ -98,16 +98,16 @@ async function start() {
 					const memeindo = await kagApi.memeindo()
 					const buffer = await getBuffer(`https://imgur.com/${memeindo.hash}.jpg`)
 					client.sendMessage(from, buffer, msgType.image, {quoted: mek})
-				} else if (body.startsWith('!nulis ')) {
+				} else if (body.startsWith('!simi ')) {
 					try {
 						const teks = encodeURIComponent(body.slice(7))
-						if (!teks) return client.sendMessage(from, 'Input teks yang ingin di tulis', msgType.text, {quoted: mek})
-						const anu = await fetchJson(`https://mhankbarbars.herokuapp.com/nulis?text=${teks}&apiKey=${apiKey}`, {method: 'get'})
+						if (!teks) return client.sendMessage(from, 'Insira o texto que deseja escrever', msgType.text, {quoted: mek})
+						const anu = await fetchJson(`https://mhankbarbars.herokuapp.com/nulis?text=${teks}`, {method: 'get'})
 						const buffer = await getBuffer(anu.result)
 						client.sendMessage(from, buffer, msgType.image, {quoted: mek, caption: 'Sukses nulis ✓'})
 					} catch (e) {
 						console.log(`Error : ${e}`)
-						client.sendMessage(from, 'Gagal nulis *X*', msgType.text, {quoted: mek})
+						client.sendMessage(from, 'seu c�digo deu erro filho', msgType.text, {quoted: mek})
 					}
 					// uncomment if you want to activate this feature
 				/*} else if (body.startsWith('!tsticker ') || body.startsWith('!tstiker ')) {
